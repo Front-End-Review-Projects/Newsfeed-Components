@@ -21,7 +21,7 @@ const data = [
     thirdParagraph: `Dagobah hutt jawa leia calamari ventress skywalker yoda. Binks wicket hutt coruscant sidious
         naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. Moff baba wicket
         han. C-3po antilles moff qui-gon ahsoka aayla dooku amidala. Palpatine droid amidala droid k-3po twi'lek padmé wookiee. Leia
-        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`,
   },
   {
     title: 'Javascript and You, ES6',
@@ -41,7 +41,7 @@ const data = [
     thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
         Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
         roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
-        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
   },
   {
     title: 'React vs Angular vs Vue',
@@ -69,7 +69,7 @@ const data = [
 
     thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
         Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
-        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
+        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`,
   },
   {
     title: 'Professional Software Development in 2019',
@@ -85,8 +85,8 @@ const data = [
 
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
-          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
+  },
 ];
 
 /*
@@ -114,3 +114,58 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(title, date, p1, p2, p3) {
+  // Creating main article container and assigning it the class "article"
+  let articleDiv = document.createElement('div');
+  articleDiv.className = 'article';
+
+  //Creating <h2> element and assign it a value to display the title argument string
+  let articleTitle = document.createElement('h2');
+  articleTitle.textContent = title;
+
+  //Creating <p> tag for date of the article. Assigning the value for the date argument and giving it a class name of "date"
+  let articleDate = document.createElement('p');
+  articleDate.className = 'date';
+  articleDate.textContent = date;
+
+  //Creating 3 <p> element
+  let pTag1 = document.createElement('p');
+  let pTag2 = document.createElement('p');
+  let pTag3 = document.createElement('p');
+
+  pTag1.textContent = p1;
+  pTag2.textContent = p2;
+  pTag3.textContent = p3;
+
+  //Creating a <span> element
+  let span = document.createElement('span');
+  span.className = 'expandButton';
+  span.textContent = '+';
+
+  //Appending child elements to the parent <div> element
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(articleDate);
+  articleDiv.appendChild(pTag1);
+  articleDiv.appendChild(pTag2);
+  articleDiv.appendChild(pTag3);
+  articleDiv.appendChild(span);
+
+  //Adding component to HTML parent div
+  let articleContainer = document.querySelector('.articles');
+  console.log(articleContainer);
+
+  articleContainer.appendChild(articleDiv);
+
+  return articleContainer;
+}
+
+for (i = 0; i < data.length - 1; i++) {
+  articleMaker(
+    data[i].title,
+    data[i].date,
+    data[i].firstParagraph,
+    data[i].secondParagraph,
+    data[i].thirdParagraph
+  );
+}
