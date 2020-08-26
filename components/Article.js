@@ -151,12 +151,21 @@ function articleMaker(title, date, p1, p2, p3) {
   articleDiv.appendChild(pTag3);
   articleDiv.appendChild(span);
 
-  return articleDiv;
+  //Adding component to HTML parent div
+  let articleContainer = document.querySelector('.articles');
+  console.log(articleContainer);
+
+  articleContainer.appendChild(articleDiv);
+
+  return articleContainer;
 }
 
-let articleFeed = data.forEach((article) => {
-  articleMaker(article.title);
-});
-
-console.log(articleMaker('whoop', 'May 28th, 2020'));
-console.log(articleFeed);
+for (i = 0; i < data.length - 1; i++) {
+  articleMaker(
+    data[i].title,
+    data[i].date,
+    data[i].firstParagraph,
+    data[i].secondParagraph,
+    data[i].thirdParagraph
+  );
+}
