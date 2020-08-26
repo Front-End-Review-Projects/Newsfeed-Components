@@ -143,6 +143,10 @@ function articleMaker(title, date, p1, p2, p3) {
   span.className = 'expandButton';
   span.textContent = '+';
 
+  span.addEventListener('click', () => {
+    articleDiv.classList.toggle('article-open');
+  });
+
   //Appending child elements to the parent <div> element
   articleDiv.appendChild(articleTitle);
   articleDiv.appendChild(articleDate);
